@@ -2,6 +2,7 @@
 using DAL.Concrete.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231107194950_mig_1")]
+    partial class mig_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -44,21 +47,6 @@ namespace DAL.Migrations
                     b.HasIndex("TeachersTeacherId");
 
                     b.ToTable("ClassTeacher");
-                });
-
-            modelBuilder.Entity("DerslikTeacher", b =>
-                {
-                    b.Property<int>("DersliklerDerslikId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TeachersTeacherId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("DersliklerDerslikId", "TeachersTeacherId");
-
-                    b.HasIndex("TeachersTeacherId");
-
-                    b.ToTable("DerslikTeacher");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Class", b =>
@@ -170,21 +158,6 @@ namespace DAL.Migrations
                     b.HasOne("Entities.Concrete.Class", null)
                         .WithMany()
                         .HasForeignKey("ClassesClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Concrete.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersTeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DerslikTeacher", b =>
-                {
-                    b.HasOne("Entities.Concrete.Derslik", null)
-                        .WithMany()
-                        .HasForeignKey("DersliklerDerslikId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
