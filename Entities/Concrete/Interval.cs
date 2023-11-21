@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Lesson:IEntity
+    public class Interval: IEntity // interval: derslerin saatleri
     {
-        public int LessonId { get; set; }
-        public string Name { get; set;}
+        public int IntervalId { get; set; }
+        public int IntervalOfday { get; set; }
         public ICollection<DersProgram> DersProgram { get; set; }
     }
 }

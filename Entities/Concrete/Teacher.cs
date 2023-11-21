@@ -12,8 +12,6 @@ namespace Entities.Concrete
         public int TeacherId { get; set; }
         public string FullName { get; set; }
         public string TeacherColorHex { get; set; }
-        public ICollection<Lesson> Lessons { get; set; }
-        public ICollection<Class> Classes { get; set; }
-        public ICollection<Derslik> Derslikler { get; set; }
+        public ICollection<DersProgram> DersProgram { get; set; }
     }
 }
